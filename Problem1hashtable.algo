@@ -1,0 +1,39 @@
+ALGORITHM sum distinct elements_hash table
+VAR
+    set1: ARRAY_OF INTEGER[N];
+    set2: ARRAY_OF INTEGER[M];
+    htab : HASH_TABLE<INTEGER,INTEGER>;
+    count :INTEGER:=1;
+    i,J,M,N,el: INTEGER;
+    sum : INTEGER:=0;
+    arr : array of INTEGER;
+
+BEGIN
+    FOR i FROM 0 TO N-1 STEP 1  DO
+      Read(set1[i]) 
+    END_FOR
+    FOR j FROM 0 TO M-1 STEP 1  DO
+      Read(set2[j]) 
+    END_FOR
+    FOR i FROM 0 TO N-1 STEP 1  DO
+      htab.insert(set1[i],1);
+      arr.push(set1[i]); 
+      END_FOR
+      
+    FOR j FROM 0 TO M-1 STEP 1  DO
+       IF (htab.lookup(set2[j]) = TRUE) THEN
+       count := htab.get(set1[i]);
+       htab.insert(set1[i],count+1);
+       ELSE
+       htab.insert(set2[j],1);
+       arr.push(set2[j]);   
+       END_IF
+    END_FOR
+
+    FOR el in arr  STEP 1  DO
+       IF (htab.get(arr[el]=1)) THEN
+       sum:=sum+arr[el];
+       END_IF
+    END_FOR
+    Read(sum)
+END
